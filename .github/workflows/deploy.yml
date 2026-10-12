@@ -1,3 +1,4 @@
+
 name: Deploy Flutter Web
 
 on:
@@ -13,7 +14,7 @@ permissions:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment:
       name: github-pages
@@ -26,6 +27,10 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
+          flutter-version: "3.27.3"
+
+      - name: Check Flutter Version
+        run: flutter --version
 
       - name: Get dependencies
         run: flutter pub get
